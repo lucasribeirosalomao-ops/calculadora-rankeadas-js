@@ -1,38 +1,43 @@
-let nomeHeroi = "Luczao";
-console.log (nomeHeroi);
+// ✅ Função principal que calcula o nível do herói
+function calcularNivel(vitorias, derrotas) {
 
-let pontosXp = 10000;
+  // ✅ VARIÁVEIS
+  let saldoVitorias = 0;
+  let nivel = "";
 
-if (pontosXp >= 1 && pontosXp <= 1000){  
-console.log ("o " +nomeHeroi + " está no rank Ferro!"); 
+  // ✅ LAÇO DE REPETIÇÃO — soma o saldo acumulando cada vitória
+  for (let i = 0; i < vitorias; i++) {
+    saldoVitorias++;
+  }
+
+  // desconta as derrotas
+  for (let i = 0; i < derrotas; i++) {
+    saldoVitorias--;
+  }
+
+  // ✅ ESTRUTURA DE DECISÃO — define o nível com base nas vitórias
+  if (vitorias <= 10) {
+    nivel = "Ferro";
+  } else if (vitorias >= 11 && vitorias <= 20) {
+    nivel = "Bronze";
+  } else if (vitorias >= 21 && vitorias <= 50) {
+    nivel = "Prata";
+  } else if (vitorias >= 51 && vitorias <= 80) {
+    nivel = "Ouro";
+  } else if (vitorias >= 81 && vitorias <= 90) {
+    nivel = "Diamante";
+  } else if (vitorias >= 91 && vitorias <= 100) {
+    nivel = "Lendário";
+  } else if (vitorias >= 101) {
+    nivel = "Imortal";
+  }
+
+  // ✅ RETORNO com o resultado
+  return `O Herói tem de saldo de ${saldoVitorias} está no nível de ${nivel}`;
 }
-else if (pontosXp >= 1001 && pontosXp <= 2000){
-    console.log ("o " +nomeHeroi + " está no rank Prata!"); 
-}
-else if (pontosXp >= 2001 && pontosXp <= 3000){
-    console.log ("o" +nomeHeroi + " está no rank Ouro!"); 
-}
-else if (pontosXp >= 3001 && pontosXp <= 4000){
-    console.log ("o " +nomeHeroi + " está no rank Ak!"); 
-}
-else if (pontosXp >= 4001 && pontosXp <= 5000){
-    console.log ("o " +nomeHeroi + " está no rank Ak cruzada!"); 
-}
-else if (pontosXp >= 5001 && pontosXp <= 6000){
-    console.log ("o " +nomeHeroi + " está no rank Xerife!"); 
-}
-else if (pontosXp >= 6001 && pontosXp <= 7000){
-    console.log ("o " +nomeHeroi + " está no rank Aguia!"); 
-}
-else if (pontosXp >= 7001 && pontosXp <= 8000){
-    console.log ("o " +nomeHeroi + " está no rank Aguia 2!"); 
-}
-else if (pontosXp >= 8001 && pontosXp <= 9000){
-    console.log ("o " +nomeHeroi + " está no rank Supremo!"); 
-}
-else if (pontosXp >= 9001){
-    console.log ("o " +nomeHeroi + " está no rank Global!"); 
-}
-else{  
-    console.log("o " +nomeHeroi + " nao tem rank! ");
-}
+
+// ✅ VARIÁVEL que armazena o retorno da função
+const resultado = calcularNivel(75, 20);
+
+// Exibe a mensagem final
+console.log(resultado);
